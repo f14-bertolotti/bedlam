@@ -63,7 +63,7 @@
 ]<complete-metric-space>
 
 #definition("Polish Space")[
-    Let $(X,Sigma)$ be a #link(<topological-space>)[topological space]. $(X,Sigma)$ is said a *Polish Space* iff. $(X,Sigma)$ is #link(<separable>)[separable], #link(<metrizable>)[metrizable], and a #link(<complete-metric-space>)[complete metric space] for some $d$.
+    Let $(X,Sigma)$ be a #link(<topological-space>)[topological space]. $(X,Sigma)$ is said a *Polish Space* iff. $(X,Sigma)$ is #link(<separable>)[separable], #link(<metrizable>)[metrizable], and a #link(<complete-metric-space>)[complete metric space] for some #link(<measure>)[metric].
 ]<polish-space>
 
 

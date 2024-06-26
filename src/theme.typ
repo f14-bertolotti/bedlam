@@ -18,6 +18,10 @@
     #set text(fill:text_color, size:12pt)
     #set par(justify:true)
     
+    #align(center)[#text(size:64pt)[Bedlam]]
+    #v(-2cm)
+    #line(length:100%, stroke:2pt+gradient.linear(white.opacify(-100%), white, white.opacify(0%)))
+
     #pagebreak()
     #outline()
     #pagebreak()

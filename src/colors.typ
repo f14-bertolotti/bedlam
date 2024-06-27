@@ -24,6 +24,6 @@
 #let lemma_color       = orange
 #let definition_color  = yellow
 #let theorem_color     = yellow
-#let example_color     = celadon
+#let example_color     = lightgreen
 #let proof_color       = orchid
 #let proposition_color = orange

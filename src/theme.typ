@@ -15,7 +15,7 @@
     #show strong: set text(bold_color)
     #show link: it => {text(link_color)[#it]}
 
-    #set text(fill:text_color, size:12pt)
+    #set text(fill:text_color, size:10pt)
     #set par(justify:true)
     
     #align(center)[#text(size:64pt)[Bedlam]]
@@ -30,10 +30,10 @@
 ]
 
 
-#let definition  = thmbox("definition"  , "Definition"  , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:definition_color)[#x]})
-#let example     = thmbox("example"     , "Example"     , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:example_color)[#x]})
-#let proposition = thmbox("proposition" , "Proposition" , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:proposition_color)[#x]})
-#let theorem     = thmbox("theorem"     , "Proposition" , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:theorem_color)[#x]})
-#let lemma       = thmbox("lemma"       , "Lemma"       , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:lemma_color)[#x]})
-#let proof       = thmbox("proof"       , "Proof"       , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:proof_color)[#x]})
+#let definition  = thmbox("definition"  , "Definition"  , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:definition_color)[#x]})
+#let example     = thmbox("example"     , "Example"     , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:example_color)[#x]})
+#let proposition = thmbox("proposition" , "Proposition" , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:proposition_color)[#x]})
+#let theorem     = thmbox("theorem"     , "Proposition" , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:theorem_color)[#x]})
+#let lemma       = thmbox("lemma"       , "Lemma"       , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:lemma_color)[#x]})
+#let proof       = thmbox("proof"       , "Proof"       , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x #h(1fr) $square.filled$ ]}, titlefmt: x => {text(weight:"bold",fill:proof_color)[#x]})
 #let comment(body) = {text(fill:comment_color)[#body]}

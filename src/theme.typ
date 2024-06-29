@@ -13,7 +13,7 @@
     #show heading.where(level: 2): it => [#text(heading_color)[#block(text(size:20pt)[#it])]]
     #show heading.where(level: 1): it => [#text(size:30pt)[#align(right)[#pagebreak() #it #line(length:100%, stroke:line_color)]]]
     #show strong: set text(bold_color)
-    #show link: it => {text(link_color)[#it]}
+    #show link: it => {text(style:"italic")[#it]}
 
     #set text(fill:text_color, size:10pt)
     #set par(justify:true)

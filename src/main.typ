@@ -1,7 +1,7 @@
 #import "theme.typ": template
 #show: template
 
-#include "topology/main.typ"
-#include "measure/main.typ"
-#include "probability/main.typ"
-#include "wasserstein/main.typ"
+#include "topology-theory/main.typ"
+#include "measure-theory/main.typ"
+#include "probability-theory/main.typ"
+#include "optimal-transport/main.typ"

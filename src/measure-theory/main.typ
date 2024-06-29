@@ -1,6 +1,16 @@
-#import "../theme.typ": proof, proposition, definition, comment
+#import "../theme.typ": proof, proposition, definition, example, comment
 
 = Measure Theory
+
+#definition("inverse function")[
+    Let $f:X --> Y$ be a function. The *inverse function* $f^(-1): Y --> X$ is a function such that $f^(-1)(y in Y) = x in X$ if $f(x) = y$.
+]<inverse-function>
+#show "inverse function": link(<inverse-function>)[inverse function]
+
+#definition("preimage")[
+    Let $f:X --> Y$ be a function. Let $E subset.eq Y$. The *preimage* is the set $f^(-1)(E) = {x in X | f(x) in E}$.
+]<preimage>
+#show "preimage": link(<preimage>)[preimage]
 
 #definition(text[$sigma$-algebra])[
     Let $X$ be a set. $Sigma subset.eq 2^X$ is said a *sigma algebra of X* iff.:
@@ -28,7 +38,7 @@
     Given $(X,Sigma)$ measurable space. $mu:Sigma --> RR union {+oo,-oo}$ is said a *measure* iff.
     1. $E in Sigma ==> mu(E)>=0$. #comment[positive].
     2. ${E_n in Sigma}_(n=1)^(oo) " such that " E_i sect E_j " for " i != j ==> mu(union.big_(i=1)^(oo) E_i) = sum_(i=1)^(oo) mu(E_i)$. #comment[The measure of disjoint sets is is the sum of the measures of each set].
-    3. $exists E in Sigma : mu(E) in RR_(>=0)$. #comment[For at least an element $mu$ is finite].
+    3. $mu(nothing)=0$.
 ]<measure>
 #show "measure": link(<measure>)[measure]
 
@@ -39,13 +49,15 @@
 
 
 #definition("measurable function")[
-    Let $(X_1, Sigma_1)$ and $(X_2, Sigma_2)$ be a measurable spaces. $f X_1 --> X_2$ is said a *measurable function* iff. $forall E in Sigma_2: f^(-1)(E) in Sigma_1$. #comment[The pre-image of each measurable set is again measurable].
+    Let $(X_1, Sigma_1)$ and $(X_2, Sigma_2)$ be a measurable spaces. $f:X_1 --> X_2$ is said a *measurable function* iff. $forall E in Sigma_2: f^(-1)(E) in Sigma_1$. #comment[The preimage of each measurable set is again measurable].
 ]<measurable-function>
 #show "measurable function": link(<measurable-function>)[measurable function]
 
 #definition("pushforward")[
     Let $(X_1,Sigma_1,mu)$ be a measure space. Let $(X_2,Sigma_2)$ be a measurable space. Let $f:X_1 --> X_2$ be a measurable function. The *pushforwad of #sym.mu under $f$* is the mapping $f_(\#)mu: Sigma_2 --> RR_(>=0)$ defined as: $ forall E in Sigma_2 : f_(\#)mu(E) = mu(f^(-1)(E)) $
 ]<pushforward>
+#show "measurable function": link(<pushforward>)[measurable function]
+
 
 #proposition("pushforward of a measure is a measure")[
     Let $(X_1,Sigma_1,mu)$ be a measure space. Let $(X_2,Sigma_2)$ be a measurable space. Let $f:X_1 --> X_2$ be a measurable function. Then $(X_2,Sigma_2,f_(\#)mu)$ is a measure space.
@@ -64,3 +76,14 @@
     3. We need to show that $exists E in Sigma_1$ such that $f_(\#)(E) >= 0$. Let $E' in Sigma_1$ such that $mu(E') >= 0$ (such $E'$ exists by defintion of measure). Then, $f(E')$ is a set that meets the requirements, that is 
         $ f_(\#)(f(E')) = mu(f^(-1)(f(E'))) = mu(E') >= 0 $
 ]
+
+#example("pushforward example")[
+    Consider the measure space $(NN,2^NN,mu(E)=|E|)$. Consider the measurable space $(RR, cal(B)(RR))$. Consider the measurable function $f:NN --> RR$ such that f(x) = x. Consider pushforward $f_(\#)mu:RR --> RR_(>=0)$. Then $f_(\#)mu$ is a measure for the measurable space $(RR, cal(B)(RR))$ since:
+    1. $f_(\#)mu(E in cal(B)(RR)) = |{n in NN | n in E}| >= 0$.
+    2. Let ${E_n}_(n=1)^(oo)$ pairwise disjoint, then $f_(\#)mu(union.big_(n=1)^(oo) E_n) = mu(f^(-1)(union.big_(n=1)^(oo) E_n)) = mu(union.big_(n=1)^(oo) f^(-1)(E_n)) = sum_(n=1)^(oo) mu(f^(-1)(E_n)) = sum_(n=1)^(oo) f_(\#)mu(E_n)$.
+    3. $f_(\#)mu(nothing) = mu(f^(-1)(nothing)) = mu(nothing) = 0$
+]
+
+TODO: add borel sigma algebra
+
+

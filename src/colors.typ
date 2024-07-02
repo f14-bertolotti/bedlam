@@ -1,5 +1,6 @@
 // COLORS 
 #let orchid        = color.rgb(200,150,250)
+#let darkgray2     = color.rgb(84,84,84)
 #let darkgray      = color.rgb(64,64,64)
 #let superdarkgray = color.rgb(16,16,16)
 #let lightblue     = color.rgb(82, 220, 255)

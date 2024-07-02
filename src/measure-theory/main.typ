@@ -2,6 +2,23 @@
 
 = Measure Theory
 
+#definition("half open rectangle")[
+    Let $a_0, b_0, ..., a_n, b_n in RR$. The set $times.big_(i=0)^n [a_i, b_i)$ is called an n-dimensional *half open rectangle*. The collection of all n-dimensional *half-open-rectangles* is denoted with $cal(I)^n_h$.
+]<half-open-rectangle>
+#show "half open rectangle": link(<half-open-rectangle>)[half open rectangle]
+
+#definition("restriction")[
+    Let $f:X --> Y$. Let $X' subset.eq X$. Let $Y'$ such that $f(X') subset.eq Y' subset.eq Y$. A *restriction of f over $X' times Y'$*, denoted $f|_(X' times Y')$ is a function $X' --> Y'$ such that $f|_(X times Y) = {(x,f(x)) | x in X, f(x) in Y}$
+]<restriction>
+#show "restriction": link(<restriction>)[restriction]
+
+#example("restriction")[
+    Let $f:RR-->RR$ such that $f(x) = x^2$ #comment[power operator over the real numbers]. Now, consider $g:NN-->NN$ such that $g(x) = x^2$ #comment[power operator over the natural number only]. Then $g$ is a restriction of f. 
+    1. $NN subset.eq RR$.
+    2. $f(NN) subset.eq NN subset.eq RR$.
+    3. ${(x, g(x))| x in NN, y in NN)} subset.eq {(x,f(x)|x in RR, y in RR)}$
+]
+
 #definition("inverse function")[
     Let $f:X --> Y$ be a function. The *inverse function* $f^(-1): Y --> X$ is a function such that $f^(-1)(y in Y) = x in X$ if $f(x) = y$.
 ]<inverse-function>
@@ -25,6 +42,11 @@
     2. $forall Sigma " "sigma"-algebra": G subset.eq Sigma ==> sigma_(X)(G) subset.eq Sigma$. #comment[Every other $sigma$-algebra that contains $G$ contains also the generated one, $sigma_(X)(G)$].
 ]<generated-sigma-algebra>
 
+#definition(text[borel $sigma$-algebra])[
+    Let $(X,G)$ be a topological space. We refer to $sigma_(X)(G)=cal(B)(X,G)$ as a *Borel $sigma$-algebra*.
+]<borel-sigma-algebra>
+#show "borel-sigma-algebra": link(<borel-sigma-algebra>)[Borel $sigma$-algebra]
+
 #definition(text[$sigma$-algebra product])[
     Let $Sigma_1$ and $Sigma_2$ be #link(<sigma-algebra>)[$sigma$-algebras] on $X_1$ and $X_2$ respectively. The *product $sigma$-algebra* denoted $Sigma_1 times.circle Sigma_2$ is defined as $#link(<generated-sigma-algebra>)[$sigma_(X_1 times X_2)$] ({S_1 times S_2 | S_1 in Sigma_1, S_2 in Sigma_2})$ 
 ]<sigma-algebra-product>
@@ -47,7 +69,6 @@
 ]<measure-space>
 #show "measure space": link(<measure-space>)[measure space]
 
-
 #definition("measurable function")[
     Let $(X_1, Sigma_1)$ and $(X_2, Sigma_2)$ be a measurable spaces. $f:X_1 --> X_2$ is said a *measurable function* iff. $forall E in Sigma_2: f^(-1)(E) in Sigma_1$. #comment[The preimage of each measurable set is again measurable].
 ]<measurable-function>
@@ -56,13 +77,13 @@
 #definition("pushforward")[
     Let $(X_1,Sigma_1,mu)$ be a measure space. Let $(X_2,Sigma_2)$ be a measurable space. Let $f:X_1 --> X_2$ be a measurable function. The *pushforwad of #sym.mu under $f$* is the mapping $f_(\#)mu: Sigma_2 --> RR_(>=0)$ defined as: $ forall E in Sigma_2 : f_(\#)mu(E) = mu(f^(-1)(E)) $
 ]<pushforward>
-#show "measurable function": link(<pushforward>)[measurable function]
+#show "pushforward": link(<pushforward>)[pushforward]
 
+The pushforward is simply a function that generates a measure for a measurable space starting from a different measure space and a measurable function acting as bridge between the two spaces. 
 
 #proposition("pushforward of a measure is a measure")[
     Let $(X_1,Sigma_1,mu)$ be a measure space. Let $(X_2,Sigma_2)$ be a measurable space. Let $f:X_1 --> X_2$ be a measurable function. Then $(X_2,Sigma_2,f_(\#)mu)$ is a measure space.
 ]<pushforward-of-a-measure-is-a-measure>
-#show "pushforward": link(<pushforward>)[pushforward]
 
 #proof(text[of @pushforward-of-a-measure-is-a-measure])[
     To prove that statement, we need to prove only the axioms of a measure.
@@ -84,6 +105,4 @@
     3. $f_(\#)mu(nothing) = mu(f^(-1)(nothing)) = mu(nothing) = 0$
 ]
 
-TODO: add borel sigma algebra
-
-
+#include "lebesgue-measure.typ" 

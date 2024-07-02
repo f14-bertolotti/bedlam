@@ -5,8 +5,9 @@
     #show: thmrules
 
     #set page(
-        paper : "us-letter",
-        fill  : page_color
+        paper : "a4",
+        fill  : page_color,
+        numbering: "1"
     )
 
     #set heading(numbering: "1.")    
@@ -15,7 +16,7 @@
     #show strong: set text(bold_color)
     #show link: it => {text(style:"italic")[#it]}
 
-    #set text(fill:text_color, size:10pt)
+    #set text(fill:text_color, size:9pt)
     #set par(justify:true)
     
     #align(center)[#text(size:64pt)[Bedlam]]

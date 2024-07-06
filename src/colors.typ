@@ -15,7 +15,7 @@
 // Text colors associations
 #let heading_color = white
 #let line_color    = 2pt + gradient.linear(darkgray, white)
-#let page_color    = gradient.linear(darkgray, superdarkgray, angle:45deg)
+#let page_color    = superdarkgray 
 #let text_color    = white
 #let bold_color    = orchid
 #let link_color    = turquoise
@@ -24,7 +24,10 @@
 // Theorem colors association
 #let lemma_color       = orange
 #let definition_color  = yellow
-#let theorem_color     = yellow
+#let theorem_color     = turquoise
 #let example_color     = lightgreen
 #let proof_color       = orchid
 #let proposition_color = orange
+
+// better page color, but it slow down the render in okular quite a bit
+//#let page_color    = gradient.linear(darkgray, superdarkgray, angle:45deg)

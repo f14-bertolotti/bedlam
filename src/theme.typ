@@ -1,6 +1,7 @@
 #import "colors.typ": *
 #import "@preview/ctheorems:1.1.2": *
 
+
 #let template(doc) = [
     #show: thmrules
 
@@ -34,7 +35,7 @@
 #let definition  = thmbox("definition"  , "Definition"  , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:definition_color)[#x]})
 #let example     = thmbox("example"     , "Example"     , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:example_color)[#x]})
 #let proposition = thmbox("proposition" , "Proposition" , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:proposition_color)[#x]})
-#let theorem     = thmbox("theorem"     , "Proposition" , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:theorem_color)[#x]})
+#let theorem     = thmbox("theorem"     , "Theorem"     , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:theorem_color)[#x]})
 #let lemma       = thmbox("lemma"       , "Lemma"       , breakable:false, inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x]}, titlefmt: x => {text(weight:"bold",fill:lemma_color)[#x]})
 #let proof       = thmbox("proof"       , "Proof"       , breakable:true , inset: (x: .2em, top: 1em), bodyfmt: x => {text()[\ #x #h(1fr) $square.filled$ ]}, titlefmt: x => {text(weight:"bold",fill:proof_color)[#x]})
 #let comment(body) = {text(fill:comment_color)[#body]}

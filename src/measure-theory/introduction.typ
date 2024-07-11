@@ -22,9 +22,20 @@
     Let $X$ be a set, and $cal(R) subset.eq 2^X$ such that:
     1. $cal(R) != nothing$. #comment[Non-empty].
     2. $A,B in cal(R) ==> A sect B in cal(R)$. #comment[Closed under intersection].
-    3. $A,B in cal(R) ==> A #symmetric-difference.tag B in cal(R)$. #comment[Closed under symmetric difference].
+    3. $A,B in cal(R) ==> A #symmetric-difference.sym B in cal(R)$. #comment[Closed under symmetric difference].
     Then $(X, cal(R))$ is called a *set ring*
 ]<set-ring>
+
+#proposition(text[intersection of #text[#set-ring.tag]s is a #set-ring.tag])[
+    Let $(X,cal(R_0))$ and $(X,cal(R_1))$ be two #text[#set-ring.tag]s. Then $(X, cal(R_0) sect cal(R_1))$ is a #set-ring.tag.
+]<insersection-of-set-ring-is-a-set-ring>
+
+#proof(text[of @insersection-of-set-ring-is-a-set-ring])[
+    Given two #text[#set-ring.tag]s $(X,cal(R_0))$ and $(X,cal(R_1))$. We need to show that $(X,cal(R) = cal(R_0) sect cal(R_1))$ is a #set-ring.tag:
+    1. Suppose $A_0 in cal(R_0)$ and $A_1 in cal(R_1)$ #comment[(such $A_0$ and $A_1$ exists since $cal(R_0)$ and $cal(R_1)$ are non-empty)]. Then $nothing in cal(R_0)$ since $nothing = A_0 #symmetric-difference.sym A_1 in cal(R_0)$. Similarly, $nothing in cal(R_1)$. Therefore $nothing in cal(R_0) sect cal(R_1)$
+    2. Suppose $A,B in cal(R)$. Then $A,B in cal(R_0)$ and $A,B in cal(R_1)$. Then $A sect B in cal(R_0)$ and $cal(R_1)$. Therefore $A sect B in cal(R)$.
+    3. Suppose $A,B in cal(R)$. Then $A,B in cal(R_0)$ and $A,B in cal(R_1)$. Then $A #symmetric-difference.sym B in cal(R_0)$ and $cal(R_1)$. Therefore $A #symmetric-difference.sym B in cal(R)$.
+]
 
 #let sigma-algebra = (
     tag : link(<sigma-algebra>)[$sigma$-algebra]
@@ -35,6 +46,17 @@
     2. $E in Sigma ==> X without E in Sigma$. #comment[close under complement].
     3. ${A_n in Sigma}_(n=1)^(oo) ==> union.big_(i=1)^(oo) A_i in Sigma$. #comment[close under infinite unions].
 ]<sigma-algebra>
+
+#proposition(text[a #sigma-algebra.tag is a #set-ring.tag])[
+    Let $(X,Sigma)$ be a #sigma-algebra.tag, then $(X,Sigma)$ is a #set-ring.tag
+]<sigma-algebra-is-a-set-ring>
+
+#proof(text[of @sigma-algebra-is-a-set-ring])[
+    We need to show that, given a #sigma-algebra.tag $(X,Sigma)$ the axioms of #text[#set-ring.tag]s hold:
+    1. $Sigma != nothing$. This is true since $X in Sigma$.
+    2. $A,B in Sigma ==> A sect B in Sigma$. This is true since $A sect B = (X without A) union (X without B)$ #comment[(a #sigma-algebra.tag is closed under $union$ and $without$)].
+    3. $A,B in Sigma ==> A #symmetric-difference.sym B in Sigma$. This is true since $A #symmetric-difference.sym B = (A without B) union (B without A)$ #comment[(a #sigma-algebra.tag is closed under $union$ and $without$)].
+]
 
 #let generated-sigma-algebra = (
     tag : link(<generated-sigma-algebra>)[generated $sigma$-algebra],

@@ -4,29 +4,41 @@
 
 #let template(doc) = [
     #show: thmrules
+    #set page(
+        paper : "us-letter",
+        fill  : page_color,
+        margin: (
+            top    : 3cm,
+            bottom : 3cm,
+            left   : 3cm,
+            right  : 3cm
+        )
+    )
+ 
+    #set text(fill:text_color, size:9pt)
+    #set par(justify:true)
+
+    #align(center)[#text(size:64pt)[#smallcaps("bedlam")]]
 
     #set page(
-        paper : "a4",
-        fill  : page_color,
-        numbering: "1"
+        numbering: "1",
+        header : [#smallcaps("bedlam")]
     )
 
     #set heading(numbering: "1.")    
-    #show heading.where(level: 2): it => [#text(heading_color)[#block(text(size:20pt)[#it])]]
-    #show heading.where(level: 1): it => [#text(size:30pt)[#align(right)[#pagebreak() #it #line(length:100%, stroke:line_color)]]]
+    #show heading.where(level: 2): it => [#pagebreak() #text(heading_color)[#block(text(size:20pt)[#smallcaps(it)])]]
+    #show heading.where(level: 1): it => [#pagebreak() #text(size:30pt)[#align(right)[#smallcaps(it)]] #line(length:100%, stroke:line_color)]
     #show strong: set text(bold_color)
     #show link: it => {text(style:"italic")[#it]}
 
-    #set text(fill:text_color, size:9pt)
-    #set par(justify:true)
     
-    #align(center)[#text(size:64pt)[Bedlam]]
-    #v(-2cm)
-    #line(length:100%, stroke:2pt+gradient.linear(white.opacify(-100%), white, white.opacify(0%)))
+    #pagebreak()
+    #hide[aa]
 
+    #outline(indent:auto)
+    
     #pagebreak()
-    #outline()
-    #pagebreak()
+    #hide[aa]
 
     #doc
 ]

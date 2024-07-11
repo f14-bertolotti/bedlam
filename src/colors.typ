@@ -14,7 +14,7 @@
 
 // Text colors associations
 #let heading_color = white
-#let line_color    = 2pt + gradient.linear(darkgray, white)
+#let line_color    = 2pt + gradient.linear(superdarkgray, white)
 #let page_color    = superdarkgray 
 #let text_color    = white
 #let bold_color    = orchid

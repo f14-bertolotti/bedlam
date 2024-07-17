@@ -1,4 +1,4 @@
-#import "../theme.typ": definition, proof, theorem, proposition, comment
+#import "../theme.typ": definition, proof, lemma, theorem, proposition, comment
 #import "introduction.typ": sigma-algebra, outer-measure, set-ring, pre-measure, measure, measure-space
 #import "../notation/main.typ": extension, restriction
 #import "../set-theory/main.typ" : cover
@@ -82,9 +82,7 @@
             $
         Since $lambda(union_(n in NN) E_n) <= sum_(n in NN) lambda(E_n)$ and $lambda(union_(n in NN) E_n) >= sum_(n in NN) lambda(E_n)$, we have that $lambda(union_(n in NN) E_n) = sum_(n in NN) lambda(E_n)$
 
-
 ]
-
 
 #proposition("measuring outside the measure domain")[
     Let $(cal(R), X)$ be s #set-ring.tag. 
@@ -110,8 +108,6 @@
                                                <=& sum_(n in NN) mu (union.big_(m in NN) A_(n,m))              && #comment[None of the #text[#cover.tag]s $A_(n,m)$ achieves the infinum] \
                                                 =& sum_(n in NN) sum_(m in NN) mu (A_(n,m))                    && #comment[$A_(n,m_0) sect A_(n,m_1) = nothing$] \
         $
- 
-        
 ]
 
 #proposition(text[restriction of $lambda_mu$])[
@@ -137,11 +133,53 @@
 ]
 
 
-#theorem("Carathéodory's Extension Theorem")[
-    Let $(X,Sigma_0)$ be a #set-ring.tag. Let $mu:Sigma_0 --> RR_(>=0) union {oo}$ be a #pre-measure.tag $(X,Sigma_0)$. 
-    Then exists unique $mu:sigma(Sigma_0) --> RR_(>=0) union {oo}$ such that $(X,Sigma,mu)$ is a #measure-space.tag and $#(restriction.sym)(sym.mu,$Sigma_0$) = mu_0$ #comment[($mu$ is a #measure.tag and an #extension.tag of $mu_0$)].
-]<caratheodory-extension-theorem>
+From @sigma-algebra-generated-by-an-outer-measure and @outer-measure-restriction-is-a-measure, we have the means to generate a #measure-space.tag (#sigma-algebra.tag and #measure.tag) just from an #outer-measure.tag. Further, from #set-ring.tag and a #measure.tag on the ring we can build an #outer-measure.tag, thanks to @measuring-outside-the-measure. Thus by piecing these construction together, we may be able to generate a #measure-space.tag from a #set-ring.tag with a #measure.tag. This is indeed the subject of @caratheodory-extension-theorem.
 
-#proof(text[of @caratheodory-extension-theorem])[
-    TODO
+#lemma[
+    Let $(X,cal(R))$ be a #set-ring.tag. 
+    Let $mu$ be a #measure.tag $(X,cal(R))$. 
+    Let $lambda$ be the #outer-measure.tag associated with $mu$ (according to @measuring-outside-the-measure). 
+    Let $Sigma$ be the #sigma-algebra.tag associated with $lambda$ (according to @sigma-algebra-generated-by-an-outer-measure).
+    Then $cal(R) subset.eq Sigma$
+]<caratheodory-lemma>
+
+#proof(text[of @caratheodory-lemma])[
+    Let $A in cal(R)$.
+    Let $E in 2^X$.
+
+    1. #comment[$lambda(E) <= lambda(E sect A) + lambda(E sect (X without A))$] \
+        Let Since $lambda$ is an #outer-measure.tag, we have $lambda(E) = lambda((E sect A) union (E sect (X without A))) <= lambda(E sect A) + lambda(E sect (X without A))$.
+    
+    2. #comment[$lambda(E sect A) + lambda(E sect (X without A)) <= lambda(E)$] \
+        Now, Let ${A_n}_(n in NN)$ be a disjoint $cal(R)$-#cover.tag of $E$.
+        Then, ${A_n sect A}$ is a disjoint $cal(R)$-#cover.tag of $X sect A$.
+        And, ${A_n sect (X without A)}$ is a disjoint $cal(R)$-#cover.tag of $X sect (X without A)$.
+        
+        Now recall that $lambda$ (according to @measuring-outside-the-measure) is the infimum from all possible covers for $mu$. Since, we simply picked two possible #text[#cover.tag]s the following hold:
+
+        $ lambda(E sect A) + lambda(E sect (X without A)) <= sum_(n in NN) mu(A_n sect A) + sum_(n in NN) mu(A_n sect (X without A)) $
+
+        Notice that $E sect A_n$ and $E sect (X without A_n)$ are disjoint, and therefore: 
+        
+        $ mu(E sect A_n) + mu(E sect (X without A_n)) = mu((E sect A_n) union (E sect (X without A_n))) = mu(A_n) $
+
+        Returning to the previous inequality, we have that:
+
+        $ sum_(n in NN) mu(A_n sect A) + sum_(n in NN) mu(A_n sect (X without A)) <= sum_(n in NN) mu(A_n) $
+
+        Since $lambda(E sect A) + lambda(E sect (X without A)) <= sum_(n in NN) mu(A_n)$ holds for all #text[#cover.tag]s, then it must hold for the tightest #cover.tag:
+
+        $ lambda(E sect A) + lambda(E sect (X without A)) <= lambda(E) $
+
+    3. #comment[$lambda(E) = lambda(E sect A) + lambda(E sect (X without A))$] \
+        Since $lambda(E) <= lambda(E sect A) + lambda(E sect (X without A)) <= lambda(E)$, we have that $lambda(E) = lambda(E sect A) + lambda(E sect (X without A))$.
+
+    4. #comment[$A in Sigma$] \
+        By definition of $Sigma$ (according to @sigma-algebra-generated-by-an-outer-measure) we have that $A in Sigma$.
 ]
+
+TODO: check measure used in the ring, that is probably a pre-measure.
+
+#theorem("Caratheodory's Extension Theorem")[
+    TODO
+]<caratheodory-extension-theorem>

@@ -173,9 +173,9 @@ A #pre-measure.tag is a precursor of a full-fledge #measure.tag. The main differ
 )
 #definition("Outer measure")[
     Let $X$ be a set. An *outer measure* $mu: 2^X --> RR_(>=0) union {oo}$ such that:
-    1. #outer-measure.ax1. #comment[empty set].
-    2. #outer-measure.ax2. #comment[Monotonicity].
-    3. #outer-measure.ax3. #comment[Countable subadditivity].
+    1. #(outer-measure.ax1)($mu$). #comment[empty set].
+    2. #(outer-measure.ax2)($mu$). #comment[Monotonicity].
+    3. #(outer-measure.ax3)($mu$). #comment[Countable subadditivity].
 ]<outer-measure>
 
 An #text[#outer-measure.tag]s are weaker wrt. #text[#measure.tag]s as they are only countably subadditive rather than countably additive. However, they are able to measure all subset of $X$ rather than only a #text[#sigma-algebra.tag]s.

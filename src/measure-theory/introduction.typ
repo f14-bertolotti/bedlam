@@ -92,17 +92,21 @@
 ]<measurable-space>
 
 #let measure = (
-    tag : link(<measure>)[measure]
+    tag : link(<measure>)[measure],
+    ax1 : measure => text[$#measure (nothing) = 0$],
+    ax2 : measure => text[$E in Sigma ==> #measure (E)>=0$],
+    ax3 : measure => text[${E_n in Sigma}_(n in NN) " pairwise disjoint " ==> #measure (union_(n in NN) E_b) = sum_(n in NN) #measure (E_n)$]
 )
 #definition("measure")[
     Given $(X,Sigma)$ #measurable-space.tag. $mu:Sigma --> RR union {+oo,-oo}$ is said a *measure* iff.
     1. $mu(nothing)=0$ #comment[Empty set].
     2. $E in Sigma ==> mu(E)>=0$. #comment[Positiveness].
-    3. ${E_n in Sigma}_(n=1)^(oo) " such that " E_i sect E_j " for " i != j ==> mu(union.big_(i=1)^(oo) E_i) = sum_(i=1)^(oo) mu(E_i)$. #comment[Countable additivity].
+    3. ${E_n in Sigma}_(n in NN) " pairwise disjoint " ==> mu(union_(n in NN) E_b) = sum_(n in NN) mu(E_n)$. #comment[Countable additivity].
 ]<measure>
 
 #let measure-space = (
     tag : link(<measure-space>)[measure space]
+
 )
 #definition("measure space")[
     $(X,Sigma,mu)$ is said a *measure space* iff. $(X,Sigma)$ is a #sigma-algebra.tag and #sym.mu is a #measure.tag of $(X,Sigma)$.
@@ -148,3 +152,32 @@ The pushforward is simply a function that generates a measure for a measurable s
     2. Let ${E_n}_(n=1)^(oo)$ pairwise disjoint, then $#(pushforward.sym)("f",sym.mu) (union.big_(n=1)^(oo) E_n) = mu(#(inverse.sym)("f") (union.big_(n=1)^(oo) E_n)) = mu(union.big_(n=1)^(oo) #(inverse.sym)("f") (E_n)) = sum_(n=1)^(oo) mu(#(inverse.sym)("f") (E_n)) = sum_(n=1)^(oo) #(pushforward.sym)("f",sym.mu) (E_n)$.
     3. $#(pushforward.sym)("f",sym.mu) (nothing) = mu(#(inverse.sym)("f") (nothing)) = mu(nothing) = 0$
 ]
+
+#let pre-measure = (
+    tag : link(<pre-measure>)[pre-measure]
+)
+#definition("pre-measure")[
+    Let $(X, Sigma)$ be a #set-algebra.tag. Let $mu:S --> R_(>=0) union {+oo}$. $mu$ is said a *pre-measure* iff.
+    1. $mu(nothing) = 0$. #comment[Empty set].
+    2. Given a collection of pairwise disjoint sets ${A_n in S}_(n in NN)$ such that $union.big_(n in NN) A_n in S ==> mu(union.big_(n in NN) A_n) = sum_(n in NN) mu(A_n)$. #comment[Countable additivity].
+    3. $forall A in S: mu(A) >= 0$. #comment[Positiveness].
+]<pre-measure>
+
+A #pre-measure.tag is a precursor of a full-fledge #measure.tag. The main difference is that a #measure.tag is defined on #text[#sigma-algebra.tag]s, meanwhile the #pre-measure.tag is defined on a simple collection of subsets. Further, given that this collection is not necessarily closed under unions as a #sigma-algebra.tag does, we also need to check that, in the second requirement, the union of $A_n$ is indeed contained in the collection.
+
+#let outer-measure = (
+    tag : link(<outer-measure>)[outer measure],
+    ax1 : measure => text[$#measure (nothing) = 0$],
+    ax2 : measure => text[$forall A,B: A subset.eq B ==> #measure (A) <= #measure (B)$],
+    ax3 : measure => text[$forall {A_n}_(n in NN): #measure (union.big_(n in NN) A_n) <= sum_(n in NN) #measure (A_n)$]
+)
+#definition("Outer measure")[
+    Let $X$ be a set. An *outer measure* $mu: 2^X --> RR_(>=0) union {oo}$ such that:
+    1. #outer-measure.ax1. #comment[empty set].
+    2. #outer-measure.ax2. #comment[Monotonicity].
+    3. #outer-measure.ax3. #comment[Countable subadditivity].
+]<outer-measure>
+
+An #text[#outer-measure.tag]s are weaker wrt. #text[#measure.tag]s as they are only countably subadditive rather than countably additive. However, they are able to measure all subset of $X$ rather than only a #text[#sigma-algebra.tag]s.
+
+

@@ -1,6 +1,15 @@
-#import "../theme.typ": proof, proposition
+#import "../theme.typ": definition, proof, proposition
 
 = Set Theory
+
+#let cover = (
+    tag : link(<cover>)[cover]
+)
+#definition("cover")[
+    Let $A$ be a set. 
+    A collection of sets $cal(C)$ is a *cover of $S$* iff.
+    $A subset.eq union.big_(C in cal(C)) C$
+]<cover>
 
 #proposition("unions as disjoint unions")[
     Let ${A_n}_(n in NN)$ be a sequence of sets.
@@ -18,4 +27,5 @@
         $
     2. Let us show that ${A'_n}_(n in NN)$ are pairwise disjoint. Consider $A'_a$ and $A'_b$ where, without loss of genrality, a < b. Then $A'_a sect A'_b = nothing$ since $A'_b$ results from $A_b$ without $A_a$ (among other sets) and $A'_a subset.eq A_a$
 ]
+
 
